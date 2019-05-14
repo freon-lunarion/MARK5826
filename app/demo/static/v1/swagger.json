@@ -1,0 +1,92 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ChatBot Api",
+    "description": "API for MARK5826 chatbot.",
+    "version": "1.0.0"
+  },
+  "basePath": "/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "Adv_compr": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string"
+        },
+        "coefficients": {
+          "type": "number",
+          "format": "double"
+        },
+        "p": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Chatfuel_text": {
+      "type": "object",
+      "properties": {
+        "messages": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/advertisements": {
+      "get": {
+        "operationId": "get_comparison",
+        "summary": "Get all Comparative Advertising between Samsung and Apple",
+        "tags": [
+          "Advertising Comparison"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Adv_compr"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/nlp": {
+      "get": {
+        "operationId": "get_nlp",
+        "summary": "Get instance and entites from user query",
+        "tags": [
+          "NLP"
+        ],
+        "parameters": [
+          {
+            "name": "user_query",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
