@@ -109,8 +109,8 @@ def main():
         ad_period_df = pd.concat([ad_period_df, brand_df], axis=0, ignore_index=True)   # Join "brand_df" at the end of "ad_period_df"
 
     ad_period_dummies_df = pd.get_dummies(ad_period_df, columns=['after', 'brand_pair', 'day'], drop_first=True)
-    y = ad_period_dummies_df.pop("similarity")
-    X = sm.add_constant(ad_period_dummies_df)
+    y = ad_period_dummies_df.pop("similarity") # can change this part (parameter)
+    X = sm.add_constant(ad_period_dummies_df) # can change this part
     model = sm.OLS(y, X).fit()
     # print(model.summary())
 
@@ -132,4 +132,4 @@ def main():
     # print(pd.concat([df_coeffs_sig_sorted, df_coeffs_control_sorted], axis=0))
     # print(df_coeffs_sig_sorted)
 
-    return df_coeffs_sig_sorted.to_dict(orient="index")
+    return df_all.to_dict(orient="index")

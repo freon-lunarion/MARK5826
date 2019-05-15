@@ -16,7 +16,7 @@ definitions:
   Adv_compr:
     type: "object"
     properties:
-      time:
+      factor:
         type: string
       coefficients:
         type: number
@@ -28,34 +28,84 @@ definitions:
     type: "object"
     properties:
       messages:
-        type: "object"
-        properties:
-          text:
-            type: string
+        type: "array"
+        items:
+          type: object
+          properties:
+            text:
+              type: string
 
 
 paths:
+  /factor/highest:
+    get:
+      operationId: factor_highest
+      tags:
+        - Advertising Comparison 
+      responses:
+        200:
+          description: "OK"
+          schema:
+              $ref : '#/definitions/Chatfuel_text'
+        400:
+          description: "Invalid status value"
+  /factor/positive:
+    get:
+      operationId: factor_positive
+      tags:
+        - Advertising Comparison 
+      responses:
+        200:
+          description: "OK"
+          schema:
+              $ref : '#/definitions/Chatfuel_text'
+        400:
+          description: "Invalid status value"
+  /factor/negative:
+    get:
+      operationId: factor_negative
+      tags:
+        - Advertising Comparison 
+      responses:
+        200:
+          description: "OK"
+          schema:
+              $ref : '#/definitions/Chatfuel_text'
+        400:
+          description: "Invalid status value"
+  /suggestion:
+    get:
+      operationId: suggestion
+      tags:
+        - Advertising Comparison 
+      responses:
+        200:
+          description: "OK"
+          schema:
+              $ref : '#/definitions/Chatfuel_text'
+        400:
+          description: "Invalid status value"
+  
+
+  /advertisements/chatfuel:
+    get:
+      operationId: getComp_chatfuel
+      summary: Get all Comparative Advertising between Samsung and Apple
+      tags:
+        - Advertising Comparison 
+      responses:
+        200:
+          description: "OK"
+          schema:
+              $ref : '#/definitions/Chatfuel_text'
+        400:
+          description: "Invalid status value"
   /advertisements:
     get:
       operationId: get_comparison
       summary: Get all Comparative Advertising between Samsung and Apple
       tags: 
         - Advertising Comparison 
-      # parameters: 
-      # - name: time_start
-      #   in: query
-      #   type: string
-      #   format: date
-      #   default: "2011-10-27"
-      # - name: time_end
-      #   in: query
-      #   type: string
-      #   format: date
-      #   default: "2012-01-22"
-      # - name: reply_format
-      #   in: query
-      #   type: string
-      #   default: ""
       responses:
         200:
           description: "OK"
