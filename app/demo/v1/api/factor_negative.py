@@ -23,6 +23,6 @@ class FactorNegative(Resource):
 
         msg = 'The campain had a negative impact in: ' 
         answer = ", ".join(label)
-        
+
         # ! Do NOT change this part
         return {'messages':[{'text':msg+answer}]}, 200, None

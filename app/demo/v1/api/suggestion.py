@@ -5,10 +5,17 @@ from flask import request, g
 
 from . import Resource
 from .. import schemas
-
+from ..regression import adver
 
 class Suggestion(Resource):
 
     def get(self):
 
-        return {}, 200, None
+        result = adver.main() # ! Do NOT change this part
+        # TODO: put your filtering logic
+
+        # TODO formating the output
+        msg = ''
+        answer = ''
+        # ! Do NOT change this part
+        return {'messages':[{'text':msg + answer }]}, 200, None

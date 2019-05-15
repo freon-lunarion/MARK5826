@@ -50,10 +50,9 @@ class RefNode(object):
 
 base_path = '/v1'
 
-definitions = {'definitions': {'Adv_compr': {'type': 'object', 'properties': {'factor': {'type': 'string'}, 'coefficients': {'type': 'number', 'format': 'double'}, 'p': {'type': 'number', 'format': 'double'}}}, 'Chatfuel_text': {'type': 'object', 'properties': {'messages': {'type': 'array', 'items': {'type': 'object', 'properties': {'text': {'type': 'string'}}}}}}}, 'parameters': {}}
+definitions = {'definitions': {'Chatfuel_text': {'type': 'object', 'properties': {'messages': {'type': 'array', 'items': {'type': 'object', 'properties': {'text': {'type': 'string'}}}}}}}, 'parameters': {}}
 
 validators = {
-    ('nlp', 'GET'): {'args': {'required': [], 'properties': {'user_query': {'type': 'string'}}}},
 }
 
 filters = {
@@ -61,9 +60,6 @@ filters = {
     ('factor_positive', 'GET'): {200: {'headers': None, 'schema': {'$ref': '#/definitions/Chatfuel_text'}}, 400: {'headers': None, 'schema': None}},
     ('factor_negative', 'GET'): {200: {'headers': None, 'schema': {'$ref': '#/definitions/Chatfuel_text'}}, 400: {'headers': None, 'schema': None}},
     ('suggestion', 'GET'): {200: {'headers': None, 'schema': {'$ref': '#/definitions/Chatfuel_text'}}, 400: {'headers': None, 'schema': None}},
-    ('advertisements_chatfuel', 'GET'): {200: {'headers': None, 'schema': {'$ref': '#/definitions/Chatfuel_text'}}, 400: {'headers': None, 'schema': None}},
-    ('advertisements', 'GET'): {200: {'headers': None, 'schema': {'type': 'array', 'items': {'$ref': '#/definitions/Adv_compr'}}}, 400: {'headers': None, 'schema': None}},
-    ('nlp', 'GET'): {200: {'headers': None, 'schema': None}},
 }
 
 scopes = {

@@ -5,10 +5,16 @@ from flask import request, g
 
 from . import Resource
 from .. import schemas
-
+from ..regression import adver
 
 class FactorHighest(Resource):
 
     def get(self):
+        result = adver.main() # ! Do NOT change this part
+        # TODO: put your filtering logic
 
-        return {}, 200, None
+        # TODO formating the output
+        msg = ''
+        answer = ''
+        # ! Do NOT change this part
+        return {'messages':[{'text':msg + answer }]}, 200, None
